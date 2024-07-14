@@ -67,7 +67,7 @@ export default function HomePage() {
                 Tutors: Elevate your language proficiency to new heights by
                 connecting with highly qualified and experienced tutors.
               </p>
-              <Button onClick={handleClick} width={"267px"}>
+              <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
                 Get started
               </Button>
             </div>

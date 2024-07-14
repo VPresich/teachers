@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateTheme } from '../../redux/auth/operations';
+import { updateTheme } from "../../redux/auth/operations";
 import { selectTheme } from "../../redux/auth/selectors";
 import { setTheme } from "../../redux/auth/slice";
 import iconsPath from "../../assets/img/icons.svg";
@@ -15,7 +15,7 @@ const ThemeSelector = () => {
   const handleThemeChange = (event) => {
     const selectedTheme = event.target.value.toLowerCase();
     dispatch(setTheme(selectedTheme));
-    // dispatch(updateTheme({ theme: selectedTheme }));
+    dispatch(updateTheme({ theme: selectedTheme }));
     setIsOpen(false);
   };
 

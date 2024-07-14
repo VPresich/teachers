@@ -5,13 +5,11 @@ import {
   logIn,
   logOut,
   refreshUser,
-  updateAvatar,
-  updateProfile,
   updateTheme,
 } from "./operations";
 
 const initialState = {
-  user: { name: null, email: null, theme: "light", avatarURL: "" },
+  user: { name: null, email: null, theme: "default", avatarURL: "" },
   token: null,
   isLoggedIn: false,
   isRefreshing: true,
@@ -91,30 +89,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = action.payload;
       })
-
-      //------------------------------------------
-      .addCase(updateAvatar.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload.avatarURL;
-        state.error = null;
-      })
-      .addCase(updateAvatar.rejected, (state, action) => {
-        state.error = action.payload;
-      })
-      //------------------------------------------
-      .addCase(updateProfile.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(updateProfile.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
-        state.error = null;
-      })
-      .addCase(updateProfile.rejected, (state, action) => {
-        state.error = action.payload;
-      })
-      //------------------------------------------
 
       .addCase(updateTheme.pending, (state) => {
         state.error = null;

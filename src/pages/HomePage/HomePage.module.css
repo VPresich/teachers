@@ -142,3 +142,7 @@
   letter-spacing: -0.02em;
   color: rgba(18, 20, 23, 0.7);
 }
+
+.btnAuxStyles {
+  width: 267px;
+}

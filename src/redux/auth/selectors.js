@@ -1,17 +1,21 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 // Basic selectors
-const selectAuth = state => state.auth;
-export const selectUser = createSelector(selectAuth, auth => auth.user);
+const selectAuth = (state) => state.auth;
+export const selectUser = createSelector(selectAuth, (auth) => auth.user);
+export const selectUserName = createSelector(
+  selectAuth,
+  (auth) => auth.user.name
+);
 
-// Memoized selectors
 export const selectIsLoggedIn = createSelector(
   selectAuth,
-  auth => auth.isLoggedIn
+  (auth) => auth.isLoggedIn
 );
-export const selectTheme = createSelector(selectUser, user => user.theme);
+
+export const selectTheme = createSelector(selectUser, (user) => user.theme);
+
 export const selectIsRefreshing = createSelector(
   selectAuth,
-  auth => auth.isRefreshing
+  (auth) => auth.isRefreshing
 );
-// export const selectUserDetails = selectUser; // Alias for clarity if needed

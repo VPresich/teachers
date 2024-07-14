@@ -17,7 +17,7 @@ export default function LoginForm({ handleLogin }) {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    console.log("SUBMITLogin", values);
+    // console.log("SUBMITLogin", values);
     handleLogin(values);
   };
 
@@ -48,7 +48,9 @@ export default function LoginForm({ handleLogin }) {
               )}
             />
           </div>
-          <Button type="submit">Log in</Button>
+          <Button type="submit" btnAuxStyles={css.btnAuxStyles}>
+            Log in
+          </Button>
         </div>
       </form>
     </FormProvider>

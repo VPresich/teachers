@@ -37,3 +37,11 @@
   flex-direction: column;
   row-gap: 18px;
 }
+
+.btnAuxStyles {
+  background-color: var(--yellow);
+}
+
+.btnAuxStyles:hover {
+  background-color: var(--yellow-accent);
+}
