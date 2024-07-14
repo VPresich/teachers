@@ -1,15 +1,11 @@
-import { useDispatch } from "react-redux";
 import { useForm, FormProvider, Controller } from "react-hook-form";
-import { logIn } from "../../../../redux/auth/operations";
 import Button from "../../../UI/Button/Button";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from "./LoginForm.module.css";
 import Input from "../../../UI/Input/Input";
 
-export default function LoginForm({ onClick }) {
-  const dispatch = useDispatch();
-
+export default function LoginForm({ handleLogin }) {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
@@ -18,18 +14,11 @@ export default function LoginForm({ onClick }) {
     },
   });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    console.log("SUBMIT", values);
-    dispatch(logIn(values))
-      .unwrap()
-      .then(() => {
-        console.log(values);
-        reset();
-        onClick();
-      })
-      .catch(() => {});
+    console.log("SUBMITLogin", values);
+    handleLogin(values);
   };
 
   return (

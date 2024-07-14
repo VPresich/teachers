@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 import {
   ERR_SHORT,
@@ -8,7 +8,7 @@ import {
   ERR_EMAIL_REQUIRED,
   ERR_PASSWORD,
   ERR_PASSWORD_REQUIRED,
-} from './constants';
+} from "../constants";
 
 export const feedbackSchema = Yup.object().shape({
   name: Yup.string().min(3, ERR_SHORT).max(50, ERR_LONG).required(ERR_REQUIRED),

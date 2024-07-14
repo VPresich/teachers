@@ -4,14 +4,13 @@ import iconsPath from "../../../assets/img/icons.svg";
 import { selectIsLoggedIn, selectTheme } from "../../../redux/auth/selectors";
 import ModalWrapper from "../../UI/ModalWrapper/ModalWrapper";
 import LoginForm from "../Forms/LoginForm/LoginForm";
-import { logOut } from "../../../redux/auth/operations";
+import { logOut, logIn } from "../../../redux/auth/operations";
 import css from "./AuthButton.module.css";
 
 import clsx from "clsx";
 
 export default function AuthButton({ children }) {
   const [showLoginForm, setShowLoginForm] = useState(false);
-
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -19,12 +18,19 @@ export default function AuthButton({ children }) {
 
   const handleButton = () => {
     if (isLoggedIn) {
-      console.log("LOGOUT", isLoggedIn);
       dispatch(logOut());
     } else {
-      console.log("isLoggedIn", isLoggedIn);
       setShowLoginForm(true);
     }
+  };
+
+  const handleLogin = (values) => {
+    dispatch(logIn(values))
+      .unwrap()
+      .then(() => {
+        setShowLoginForm(false);
+      })
+      .catch(() => {});
   };
 
   const handleCloseLogin = () => {
@@ -48,7 +54,7 @@ export default function AuthButton({ children }) {
       </button>
       {showLoginForm && (
         <ModalWrapper onClose={handleCloseLogin}>
-          <LoginForm onClick={handleCloseLogin} />
+          <LoginForm handleLogin={handleLogin} />
         </ModalWrapper>
       )}
     </div>

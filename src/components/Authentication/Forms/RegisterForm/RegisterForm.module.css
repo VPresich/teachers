@@ -2,35 +2,38 @@
   width: 100%;
 }
 
-.info {
+.content {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.titleContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  row-gap: 20px;
 }
 
-.field {
-  background-color: #1f1f1f;
-  border: 1px solid #bedbb0;
-  border-radius: 8px;
-  width: 344px;
-  height: 49px;
-  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
-  background: #1f1f1f;
-  opacity: 0.4;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
+.title {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
   letter-spacing: -0.02em;
-  color: #fff;
-  padding-left: 14px;
+  color: #121417;
 }
 
-.fieldContainer {
-  position: relative;
+.text {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
 }
 
-.error {
-  margin-top: 4px;
-  color: #bedbb0;
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
 }

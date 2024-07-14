@@ -1,47 +1,65 @@
-import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/operations';
-import { Formik, Form } from 'formik';
-import Button from '../../UI/Button/Button';
+import { useForm, FormProvider, Controller } from "react-hook-form";
+import Button from "../../../UI/Button/Button";
+import Input from "../../../UI/Input/Input";
+import { feedbackSchema } from "./feedbackSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import css from "./RegisterForm.module.css";
 
-import { feedbackSchema } from '../LoginForm/feedbackSchema';
-import { errNotify, successNotify } from '../../../notification/notification';
-import { ERR_REGISTRATION, SUCCESS_REGISTRATION } from '../constants';
-import Input from '../../UI/Input/Input';
-import css from './RegisterForm.module.css';
+export default function RegisterForm({ handleRegistration }) {
+  const methods = useForm({
+    resolver: yupResolver(feedbackSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
 
-export default function RegisterForm() {
-  const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    dispatch(register(values))
-      .unwrap()
-      .then(() => {
-        successNotify(SUCCESS_REGISTRATION);
-        actions.resetForm();
-      })
-      .catch(() => {
-        errNotify(ERR_REGISTRATION);
-      });
+  const { handleSubmit } = methods;
+
+  const onSubmit = async (values) => {
+    // console.log("SUBMIT Registration", values);
+    handleRegistration(values);
   };
 
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        email: '',
-        password: '',
-      }}
-      onSubmit={handleSubmit}
-      validationSchema={feedbackSchema}
-    >
-      <Form className={css.form}>
-        <div className={css.info}>
-          <Input onName={'name'} onPlaceholder={'Enter your name'} color='rgba(255, 255, 255, 0.5)'/>
-          <Input onName={'email'} onPlaceholder={'Enter your email'} color='rgba(255, 255, 255, 0.5)'/>
-          <Input onName={'password'} onPlaceholder={'Confirm a password'} type='password' color='rgba(255, 255, 255, 0.5)'/>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+        <div className={css.content}>
+          <div className={css.titleContainer}>
+            <h3 className={css.title}>Registraition</h3>
+            <p className={css.text}>
+              Thank you for your interest in our platform! In order to register,
+              we need some information. Please provide us with the following
+              information
+            </p>
+          </div>
+          <div className={css.inputsWrapper}>
+            <Controller
+              name="name"
+              control={methods.control}
+              render={({ field }) => (
+                <Input {...field} placeholder="Name" type="text" />
+              )}
+            />
+            <Controller
+              name="email"
+              control={methods.control}
+              render={({ field }) => (
+                <Input {...field} placeholder="Email" type="text" />
+              )}
+            />
+            <Controller
+              name="password"
+              control={methods.control}
+              render={({ field }) => (
+                <Input {...field} placeholder="Password" type="password" />
+              )}
+            />
+          </div>
+          <Button type="submit">Sign Up</Button>
         </div>
-
-        <Button text="Register Now" type="submit" />
-      </Form>
-    </Formik>
+      </form>
+    </FormProvider>
   );
 }
