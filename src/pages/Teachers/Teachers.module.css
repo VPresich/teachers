@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  column-gap: 24px;
+  margin: 0 auto;
+}
+
+.catalogContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+}

@@ -1,0 +1,103 @@
+import { useSelector } from "react-redux";
+import clsx from "clsx";
+import { selectTheme } from "../../redux/auth/selectors";
+import DocumentTitle from "../../components/DocumentTitle";
+import AppLayout from "../../components/AppLayout/AppLayout";
+import Button from "../../components/UI/Button/Button";
+import imgDefaultUrl from "../../assets/img/home/default_block.svg";
+import imgYellowUrl from "../../assets/img/home/yellow_block.svg";
+import imgGreenUrl from "../../assets/img/home/green_block.svg";
+import imgBlueUrl from "../../assets/img/home/blue_block.svg";
+import imgPinkUrl from "../../assets/img/home/pink_block.svg";
+import imgRedUrl from "../../assets/img/home/red_block.svg";
+
+const selectImgUrl = (theme) => {
+  let imgUrl = imgDefaultUrl;
+
+  switch (theme) {
+    case "yellow":
+      imgUrl = imgYellowUrl;
+      break;
+    case "green":
+      imgUrl = imgGreenUrl;
+      break;
+    case "blue":
+      imgUrl = imgBlueUrl;
+      break;
+    case "pink":
+      imgUrl = imgPinkUrl;
+      break;
+    case "red":
+      imgUrl = imgRedUrl;
+      break;
+    default:
+      break;
+  }
+  return imgUrl;
+};
+
+import { useNavigate } from "react-router-dom";
+
+import css from "./HomePage.module.css";
+
+export default function HomePage() {
+  const theme = useSelector(selectTheme);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/teachers");
+  };
+
+  return (
+    <>
+      <DocumentTitle>Home Page</DocumentTitle>
+      <AppLayout>
+        <div className={css.container}>
+          <section className={css.welcomeSection}>
+            <div className={css.info}>
+              <div className={css.titleConainer}>
+                <h1 className={css.title}>
+                  Unlock your potential with the best{" "}
+                  <span className={clsx(css.accent, css[theme])}>language</span>{" "}
+                  tutors
+                </h1>
+              </div>
+              <p className={css.text}>
+                Embark on an Exciting Language Journey with Expert Language
+                Tutors: Elevate your language proficiency to new heights by
+                connecting with highly qualified and experienced tutors.
+              </p>
+              <Button onClick={handleClick} width={"267px"}>
+                Get started
+              </Button>
+            </div>
+            <div className={css.imgContainer}>
+              <img src={selectImgUrl(theme)} alt="camp" className={css.img} />
+            </div>
+          </section>
+
+          <section className={clsx(css.statisticsSection, css[theme])}>
+            <ul className={css.statisticsList}>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>32,000 +</p>
+                <p className={css.itemTitle}>Experienced tutors</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>300,000 +</p>
+                <p className={css.itemTitle}>5-star tutor reviews</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>120 +</p>
+                <p className={css.itemTitle}>Subjects taught</p>
+              </li>
+              <li className={css.statisticsItem}>
+                <p className={css.itemValue}>200 +</p>
+                <p className={css.itemTitle}>Tutor nationalities</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </AppLayout>
+    </>
+  );
+}
