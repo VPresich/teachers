@@ -8,10 +8,30 @@
 
 .default {
   fill: transparent;
-  stroke: var(--main);
+  stroke: var(--primary);
 }
 
-.favorite {
-  fill: var(--button);
-  stroke: var(--button);
+.yellow {
+  fill: var(--yellow);
+  stroke: var(--yellow);
+}
+
+.green {
+  fill: var(--green);
+  stroke: var(--green);
+}
+
+.blue {
+  fill: var(--blue);
+  stroke: var(--blue);
+}
+
+.pink {
+  fill: var(--pink);
+  stroke: var(--pink);
+}
+
+.red {
+  fill: var(--red);
+  stroke: var(--red);
 }

@@ -3,30 +3,34 @@
   border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 20px;
   padding: 24px;
-
-  height: 358px;
   display: flex;
-  gap: 24px;
+  gap: 48px;
 }
 
 .infoWrapper {
   width: calc(100% - 92px);
-
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .mainInfo {
   display: flex;
   flex-direction: column;
   row-gap: 8px;
+  margin-bottom: 16px;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .firstLine {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 32px;
 }
 
 .label {
@@ -46,7 +50,7 @@
 .languages {
   font-weight: 500;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   color: var(--primary);
   text-decoration: underline;
 }
@@ -56,11 +60,30 @@
   gap: 4px;
 }
 
+.descrWrapper {
+  display: flex;
+  gap: 4px;
+}
+
 .description {
   font-weight: 500;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   color: var(--primary);
+}
+
+.readMore {
+  width: 82px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--primary);
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 32px;
 }
 
 .levelList {
@@ -69,4 +92,15 @@
   flex-wrap: wrap;
   gap: 8px;
   list-style: none;
+}
+
+.experience {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--primary);
+}
+
+.btnAuxStyles {
+  width: 232px;
 }

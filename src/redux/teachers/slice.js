@@ -50,7 +50,6 @@ const teachersSlice = createSlice({
       .addCase(getTeachersPerPage.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log("action.payload", action.payload);
         state.currentPage = action.payload.page;
         state.itemsPerPage = action.payload.limit;
         state.totalItems = action.payload.totalRecords;
@@ -75,7 +74,6 @@ const teachersSlice = createSlice({
       .addCase(getTeachersWithParams.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log("action.payload", action.payload);
         state.currentPage = action.payload.page;
         state.itemsPerPage = action.payload.limit;
         state.totalItems = action.payload.totalRecords;

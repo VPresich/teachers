@@ -7,12 +7,15 @@
 .featuresContainer {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-right: 64px;
 }
 
 .feature {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .iconContainer {
@@ -21,6 +24,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.iconBook {
+  stroke: var(--primary);
+  fill: transparent;
 }
 
 .iconStar {

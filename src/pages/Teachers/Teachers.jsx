@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTeachersPerPage } from "../../redux/teachers/operations";
 import { setPage } from "../../redux/teachers/slice";
-import Card from "../../components/Card/Card";
+import CardList from "../../components/CardsList/CardsList";
 import {
   selectTeachers,
   selectCurrentPage,
@@ -14,8 +14,6 @@ import AppLayout from "../../components/AppLayout/AppLayout";
 import Button from "../../components/UI/Button/Button";
 import DocumentTitle from "../../components/DocumentTitle";
 import css from "./Teachers.module.css";
-
-import teacher from "../../data/teacher.json";
 
 export default function Teachers() {
   const dispatch = useDispatch();
@@ -51,7 +49,7 @@ export default function Teachers() {
         <section className={css.container}>
           <h2 className="visually-hidden"> Teachers catalog</h2>
           <div className={css.catalog}>
-            <Card teacher={teacher} />
+            <CardList teachers={teachers} />
           </div>
           {isLoading ? (
             <p>Loading...</p>

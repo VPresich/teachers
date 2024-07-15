@@ -2,11 +2,12 @@ import LevelItem from "../LevelItem/LevelItem";
 import css from "./LevelList.module.css";
 
 export default function LevelList({ levels, levelFilter }) {
+  console.log(levels);
   return (
     <ul className={css.container}>
-      {levels.map(({ title, index }) => (
+      {levels.map((level, index) => (
         <li key={index}>
-          <LevelItem title={title} isActive={title === levelFilter} />
+          <LevelItem title={level} isActive={level === levelFilter} />
         </li>
       ))}
     </ul>

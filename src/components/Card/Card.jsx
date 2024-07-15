@@ -1,6 +1,7 @@
 import { useState } from "react";
-import FirstCardLine from "../FirstCardLine/FirstCardLine";
+import CardFirstLine from "../CardFirstLine/CardFirstLine";
 import LevelList from "../UI/LevelList/LevelList";
+import CardDetails from "../CardDetails/CardDetails";
 import Button from "../UI/Button/Button";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 // import ModalContent from "../ModalContent/ModalContent";
@@ -15,6 +16,7 @@ export default function Card({ teacher }) {
     teacher;
 
   const [showModal, setShowModal] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleClick = () => {
     setShowModal(true);
@@ -24,25 +26,31 @@ export default function Card({ teacher }) {
     setShowModal(false);
   };
 
+  const handleShowDetails = () => {
+    setShowDetails((prevState) => {
+      !prevState;
+    });
+  };
+
   return (
     <div className={css.container}>
       <Image imgUrl={avatar_url} name={name} />
 
       <div className={css.infoWrapper}>
-        <div className={css.mainInfo}>
-          <div className={css.firstLine}>
+        <div className={css.firstLine}>
+          <div className={css.nameWrapper}>
             <span className={css.label}>Languages</span>
-            <FirstCardLine teacher={teacher} />
+            <p className={css.name}>{name} </p>
+          </div>
+          <CardFirstLine teacher={teacher} />
+        </div>
+        <div className={css.mainInfo}>
+          <div className={css.descrWrapper}>
+            <span className={css.label}>Speaks: </span>
+            <span className={css.languages}>{languages.join(", ")}</span>
           </div>
 
-          <p className={css.name}>{name} </p>
-
-          <div>
-            <span className={css.label}>Speaks:</span>
-            <span className={css.languages}>{languages.join(". ")}</span>
-          </div>
-
-          <div>
+          <div className={css.descrWrapper}>
             <span className={css.label}>Lesson Info:</span>
             <EllipsisText
               text={lesson_info}
@@ -51,17 +59,27 @@ export default function Card({ teacher }) {
             />
           </div>
 
-          <div>
+          <div className={css.descrWrapper}>
+            <span className={css.label}>Conditions:</span>
             <EllipsisText
               text={conditions.join(" ")}
               maxLines={1}
               className={css.description}
             />
           </div>
-
-          <LevelList levels={levels} levelFilter="A1 Beginner" />
         </div>
-        <Button onClick={handleClick}>Book trial lesson</Button>
+
+        <span className={css.readMore}>Read more</span>
+
+        {showDetails && <CardDetails teacher={teacher} />}
+
+        <LevelList levels={levels} levelFilter="A1 Beginner" />
+
+        {showDetails && (
+          <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
+            Book trial lesson
+          </Button>
+        )}
       </div>
       {showModal && (
         <ModalWrapper onClose={handleClose}>
