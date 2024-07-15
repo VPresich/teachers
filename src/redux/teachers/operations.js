@@ -11,10 +11,8 @@ export const getTeachersPerPage = createAsyncThunk(
           limit,
         },
       });
-      return {
-        items: response.data,
-        totalItems: response.data.length,
-      };
+      console.log("RESPONSE Data", response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

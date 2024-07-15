@@ -1,28 +1,19 @@
 import { useState } from "react";
-import CardTitle from "../../components/CardTitle/CardTitle";
-import CategoryList from "../../components/UI/CategoryList/CategoryList";
+import FirstCardLine from "../FirstCardLine/FirstCardLine";
+import LevelList from "../UI/LevelList/LevelList";
 import Button from "../UI/Button/Button";
-import Location from "../../components/Location/Location";
-import Rating from "../../components/Rating/Rating";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
-import getReviewersRating from "../../auxiliary/getReviewersRating";
-import ModalContent from "../ModalContent/ModalContent";
-import getCategoryShortList from "../../auxiliary/getCategoryShortList";
+// import ModalContent from "../ModalContent/ModalContent";
 import Image from "../UI/Image/Image";
+
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
 
 import css from "./Card.module.css";
 
-export default function Card({
-  id,
-  imgUrl,
-  name,
-  price,
-  description,
-  details,
-  reviews,
-  location,
-}) {
+export default function Card({ teacher }) {
+  const { _id, avatar_url, name, lesson_info, conditions, languages, levels } =
+    teacher;
+
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
@@ -35,32 +26,46 @@ export default function Card({
 
   return (
     <div className={css.container}>
-      <Image imgUrl={imgUrl} name={name} />
+      <Image imgUrl={avatar_url} name={name} />
 
       <div className={css.infoWrapper}>
         <div className={css.mainInfo}>
-          <CardTitle name={name} price={price} id={id} />
-          <div className={css.wrapperSecondLine}>
-            <Rating rating={getReviewersRating(reviews)} />
-            <Location location={location} isModalOpen={false} />
+          <div className={css.firstLine}>
+            <span className={css.label}>Languages</span>
+            <FirstCardLine teacher={teacher} />
           </div>
+
+          <p className={css.name}>{name} </p>
+
+          <div>
+            <span className={css.label}>Speaks:</span>
+            <span className={css.languages}>{languages.join(". ")}</span>
+          </div>
+
+          <div>
+            <span className={css.label}>Lesson Info:</span>
+            <EllipsisText
+              text={lesson_info}
+              maxLines={1}
+              className={css.description}
+            />
+          </div>
+
+          <div>
+            <EllipsisText
+              text={conditions.join(" ")}
+              maxLines={1}
+              className={css.description}
+            />
+          </div>
+
+          <LevelList levels={levels} levelFilter="A1 Beginner" />
         </div>
-        <EllipsisText
-          text={description}
-          maxLines={1}
-          className={css.description}
-        />
-        <CategoryList
-          categories={getCategoryShortList(details)}
-          containerStyle={css.categoriesList}
-        />
-        <Button variant="color" width="166px" onClick={handleClick}>
-          Show more
-        </Button>
+        <Button onClick={handleClick}>Book trial lesson</Button>
       </div>
       {showModal && (
         <ModalWrapper onClose={handleClose}>
-          <ModalContent id={id} />
+          {/* <ModalContent id={_id} /> */}
         </ModalWrapper>
       )}
     </div>

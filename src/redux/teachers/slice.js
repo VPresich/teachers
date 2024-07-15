@@ -14,8 +14,8 @@ const teachersSlice = createSlice({
     favorites: [],
     currentPage: 1,
     totalItems: 20,
+    totalPages: 1,
     itemsPerPage: 4,
-    lastQuantity: 0,
   },
   reducers: {
     setPage(state, action) {
@@ -45,16 +45,24 @@ const teachersSlice = createSlice({
     builder
       .addCase(getTeachersPerPage.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getTeachersPerPage.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log("action.payload", action.payload);
+        state.currentPage = action.payload.page;
+        state.itemsPerPage = action.payload.limit;
+        state.totalItems = action.payload.totalRecords;
+        state.totalPages = action.payload.totalPages;
+
         if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.items];
+          state.items = [...state.items, ...action.payload.teachers];
         else {
-          state.items = action.payload.items;
+          state.items = action.payload.teachers;
         }
       })
+
       .addCase(getTeachersPerPage.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
@@ -62,16 +70,21 @@ const teachersSlice = createSlice({
 
       .addCase(getTeachersWithParams.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getTeachersWithParams.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log("action.payload", action.payload);
+        state.currentPage = action.payload.page;
+        state.itemsPerPage = action.payload.limit;
+        state.totalItems = action.payload.totalRecords;
+
         if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.items];
+          state.items = [...state.items, ...action.payload.teachers];
         else {
-          state.items = action.payload.items;
+          state.items = action.payload.teachers;
         }
-        state.lastQuantity = action.payload.items?.length;
       })
       .addCase(getTeachersWithParams.rejected, (state, action) => {
         state.isLoading = false;

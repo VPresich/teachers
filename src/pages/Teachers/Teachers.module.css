@@ -1,13 +1,19 @@
 .container {
+  margin-top: 96px;
   display: flex;
   column-gap: 24px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.catalogContainer {
-  margin-top: 50px;
+.catalog {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 50px;
+}
+
+.btnAuxStyles {
+  width: 200px;
 }

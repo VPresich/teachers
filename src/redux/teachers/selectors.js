@@ -1,20 +1,22 @@
 import { createSelector } from "reselect";
-import { selectQueryParams } from "../filters/selectors";
+// import { selectQueryParams } from "../filters/selectors";
 
 export const selectTeachersState = (state) => state.teachers;
 export const selectTeachers = (state) => state.teachers.items;
-export const selectFavorites = (state) => state.teachers.favorites;
-export const selectItemsPerPage = (state) => state.teachers.itemsPerPage;
-export const selectCurrentPage = (state) => state.teachers.currentPage;
+
 export const selectIsLoading = (state) => state.teachers.isLoading;
 export const selectError = (state) => state.teachers.error;
 
-const selectTotalItems = (state) => state.teachers.totalItems;
-const selectTeachersNumber = (state) => state.teachers.items.length;
+export const selectItemsPerPage = (state) => state.teachers.itemsPerPage;
+export const selectCurrentPage = (state) => state.teachers.currentPage;
+
+const selectTotalPages = (state) => state.teachers.totalPages;
+
+export const selectFavorites = (state) => state.teachers.favorites;
 
 export const selectIsMore = createSelector(
-  [selectTeachersNumber, selectTotalItems],
-  (teachersNum, teachersMax) => teachersNum < teachersMax
+  [selectCurrentPage, selectTotalPages],
+  (currPage, lastPage) => currPage < lastPage
 );
 
 export const selectTeacherById = createSelector(

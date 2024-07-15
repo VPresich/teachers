@@ -1,15 +1,16 @@
 .container {
+  width: 100%;
   border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 20px;
   padding: 24px;
-  width: 888px;
+
   height: 358px;
   display: flex;
   gap: 24px;
 }
 
 .infoWrapper {
-  width: 526px;
+  width: calc(100% - 92px);
 
   display: flex;
   flex-direction: column;
@@ -22,19 +23,47 @@
   row-gap: 8px;
 }
 
-.wrapperSecondLine {
+.firstLine {
   display: flex;
-  column-gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--default);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  color: var(--primary);
+}
+
+.languages {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.textContainer {
+  display: flex;
+  gap: 4px;
 }
 
 .description {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
-  color: var(--text);
+  line-height: 150%;
+  color: var(--primary);
 }
 
-.categoriesList {
+.levelList {
   width: 526px;
   display: flex;
   flex-wrap: wrap;
