@@ -1,6 +1,7 @@
 import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
 import VertSeparator from "../UI/VertSeparator/VertSeparator";
 import iconsPath from "../../assets/img/icons.svg";
+import formatNumber from "../../auxiliary/formatNumber";
 
 import css from "./CardFirstLine.module.css";
 
@@ -31,7 +32,9 @@ export default function CardFirstLine({ teacher }) {
             <use className={css.iconStar} href={`${iconsPath}#icon-star`} />
           </svg>
           <span className={css.featureTitle}>Rating:</span>
-          <span className={css.featureValue}>{teacher.rating}</span>
+          <span className={css.featureValue}>
+            {formatNumber(teacher.rating)}
+          </span>
           <span className={css.separator}></span>
         </div>
 

@@ -4,7 +4,7 @@ import LevelList from "../UI/LevelList/LevelList";
 import CardDetails from "../CardDetails/CardDetails";
 import Button from "../UI/Button/Button";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
-// import ModalContent from "../ModalContent/ModalContent";
+import BookingFormContent from "../BookingFormContent/BookingFormContent";
 import Image from "../UI/Image/Image";
 
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
@@ -12,7 +12,7 @@ import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import css from "./Card.module.css";
 
 export default function Card({ teacher }) {
-  const { _id, avatar_url, name, lesson_info, conditions, languages, levels } =
+  const { avatar_url, name, lesson_info, conditions, languages, levels } =
     teacher;
 
   const [showModal, setShowModal] = useState(false);
@@ -27,9 +27,11 @@ export default function Card({ teacher }) {
   };
 
   const handleShowDetails = () => {
-    setShowDetails((prevState) => {
-      !prevState;
-    });
+    setShowDetails(!showDetails);
+  };
+
+  const handleValues = (values) => {
+    console.log(values);
   };
 
   return (
@@ -69,21 +71,37 @@ export default function Card({ teacher }) {
           </div>
         </div>
 
-        <span className={css.readMore}>Read more</span>
+        <span className={css.readMore} onClick={handleShowDetails}>
+          {showDetails ? "Show less" : "Read more"}
+        </span>
 
-        {showDetails && <CardDetails teacher={teacher} />}
+        <div
+          className={
+            showDetails
+              ? `${css.details} ${css.visible}`
+              : `${css.details} ${css.hidden}`
+          }
+        >
+          <CardDetails teacher={teacher} />
+        </div>
 
         <LevelList levels={levels} levelFilter="A1 Beginner" />
 
-        {showDetails && (
+        <div
+          className={
+            showDetails
+              ? `${css.details} ${css.visible}`
+              : `${css.details} ${css.hidden}`
+          }
+        >
           <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
             Book trial lesson
           </Button>
-        )}
+        </div>
       </div>
       {showModal && (
         <ModalWrapper onClose={handleClose}>
-          {/* <ModalContent id={_id} /> */}
+          <BookingFormContent teacher={teacher} handleValues={handleValues} />
         </ModalWrapper>
       )}
     </div>

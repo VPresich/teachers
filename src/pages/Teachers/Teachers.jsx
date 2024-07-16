@@ -19,14 +19,13 @@ export default function Teachers() {
   const dispatch = useDispatch();
 
   const teachers = useSelector(selectTeachers);
-  console.log("TEACHERS", teachers);
+  // console.log("TEACHERS", teachers);
 
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);
   const isMore = useSelector(selectIsMore);
 
-  console.log("isMore", isMore);
   // const queryParams = useSelector(selectQueryParams);
 
   useEffect(() => {

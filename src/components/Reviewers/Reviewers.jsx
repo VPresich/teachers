@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { selectTheme } from "../../redux/auth/selectors";
 import iconsPath from "../../assets/img/icons.svg";
+import formatNumber from "../../auxiliary/formatNumber";
 import css from "./Reviewers.module.css";
 
 export default function Reviewers({ reviews = [] }) {
@@ -24,7 +25,9 @@ export default function Reviewers({ reviews = [] }) {
                     href={`${iconsPath}#icon-star`}
                   />
                 </svg>
-                <span className={css.rating}>{reviewer_rating}</span>
+                <span className={css.rating}>
+                  {formatNumber(reviewer_rating)}
+                </span>
               </div>
             </div>
           </div>
