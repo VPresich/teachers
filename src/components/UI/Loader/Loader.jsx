@@ -1,7 +1,7 @@
-import css from './Loader.module.css';
-import { Triangle } from 'react-loader-spinner';
+import css from "./Loader.module.css";
+import { Triangle } from "react-loader-spinner";
 
-export default function Loader() {
+const Loader = () => {
   return (
     <div className={css.container}>
       <Triangle
@@ -12,7 +12,9 @@ export default function Loader() {
         ariaLabel="triangle-loading"
         wrapperStyle={{}}
         wrapperClass=""
-        />
+      />
     </div>
-  )
-}
+  );
+};
+
+export default Loader;

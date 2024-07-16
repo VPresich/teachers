@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CardFirstLine from "../CardFirstLine/CardFirstLine";
-import LevelList from "../UI/LevelList/LevelList";
+import LevelList from "../LevelList/LevelList";
 import CardDetails from "../CardDetails/CardDetails";
 import Button from "../UI/Button/Button";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";

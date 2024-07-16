@@ -1,7 +1,7 @@
 import LevelItem from "../LevelItem/LevelItem";
 import css from "./LevelList.module.css";
 
-export default function LevelList({ levels, levelFilter }) {
+const LevelList = ({ levels, levelFilter }) => {
   return (
     <ul className={css.container}>
       {levels.map((level, index) => (
@@ -11,4 +11,6 @@ export default function LevelList({ levels, levelFilter }) {
       ))}
     </ul>
   );
-}
+};
+
+export default LevelList;

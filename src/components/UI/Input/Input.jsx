@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import css from "./Input.module.css";
 
-export default function Input({ name, onChange, value, placeholder, type }) {
+const Input = ({ name, onChange, value, placeholder, type }) => {
   const [showPassword, setShowPassword] = useState(false);
   const {
     formState: { errors },
@@ -39,4 +39,6 @@ export default function Input({ name, onChange, value, placeholder, type }) {
       )}
     </div>
   );
-}
+};
+
+export default Input;

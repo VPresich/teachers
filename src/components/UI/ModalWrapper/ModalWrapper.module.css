@@ -20,6 +20,8 @@
   padding-right: 64px;
   border-radius: 30px;
   position: relative;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .closeBtn {

@@ -3,7 +3,7 @@ import { selectTheme } from "../../../redux/auth/selectors";
 import css from "./Button.module.css";
 import clsx from "clsx";
 
-export default function Button({ children, onClick, btnAuxStyles, ...props }) {
+const Button = ({ children, onClick, btnAuxStyles, ...props }) => {
   const theme = useSelector(selectTheme);
   return (
     <button
@@ -14,4 +14,6 @@ export default function Button({ children, onClick, btnAuxStyles, ...props }) {
       {children}
     </button>
   );
-}
+};
+
+export default Button;
