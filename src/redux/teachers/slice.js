@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logOut } from "../auth/operations";
 import {
   getTeachersPerPage,
   getTeacherById,
@@ -25,7 +26,11 @@ const teachersSlice = createSlice({
     resetStore(state) {
       state.currentPage = 1;
       state.items = [];
-      state.lastQuantity = 0;
+      state.isLoading = false;
+      state.error = null;
+      state.totalItems = 20;
+      state.totalPages = 1;
+      state.itemsPerPage = 4;
     },
 
     addToFavorites: (state, action) => {
@@ -108,7 +113,14 @@ const teachersSlice = createSlice({
       .addCase(getTeacherById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      //-----------------------------------------------
+      .addCase(logOut.fulfilled, (state) => {
+        resetStore();
+        state.favorites = [];
       });
+    //-------------------------------------------------
   },
 });
 
