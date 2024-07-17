@@ -35,6 +35,8 @@ export default function Card({ teacher }) {
 
   const handleValues = (values) => {
     console.log(values);
+    setShowModal(false);
+    setShowDetails(false);
   };
 
   return (
@@ -73,11 +75,11 @@ export default function Card({ teacher }) {
             />
           </div>
         </div>
-
-        <span className={css.readMore} onClick={handleShowDetails}>
-          {showDetails ? "Show less" : "Read more"}
-        </span>
-
+        {!showDetails && (
+          <span className={css.readMore} onClick={handleShowDetails}>
+            Read more
+          </span>
+        )}
         <div
           className={
             showDetails

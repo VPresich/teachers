@@ -23,7 +23,6 @@ export default function BookingFormContent({ teacher, handleValues }) {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    // console.log("SUBMIT Registration", values);
     handleValues(values);
   };
 
@@ -72,7 +71,7 @@ export default function BookingFormContent({ teacher, handleValues }) {
               )}
             />
             <Controller
-              name="password"
+              name="phone"
               control={methods.control}
               render={({ field }) => (
                 <Input {...field} placeholder="Phone number" type="text" />
