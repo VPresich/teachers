@@ -20,7 +20,6 @@ export const fetchFavorites = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInst.get("favorites");
-      console.log("RESPONSE", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,7 +41,6 @@ export const addFavorite = createAsyncThunk(
 
 export const removeFavorite = createAsyncThunk(
   "favorites/removeFavorite",
-  // with auxiliary Favorites collection in MongoDB
   async (idTeacher, thunkAPI) => {
     try {
       const response = await axiosInst.delete(`favorites/${idTeacher}`);

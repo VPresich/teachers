@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectLevel } from "../../redux/filters/selectors";
 import CardFirstLine from "../CardFirstLine/CardFirstLine";
 import LevelList from "../LevelList/LevelList";
 import CardDetails from "../CardDetails/CardDetails";
@@ -17,6 +19,7 @@ export default function Card({ teacher }) {
 
   const [showModal, setShowModal] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const levelFilter = useSelector(selectLevel);
 
   const handleClick = () => {
     setShowModal(true);
@@ -85,7 +88,7 @@ export default function Card({ teacher }) {
           <CardDetails teacher={teacher} />
         </div>
 
-        <LevelList levels={levels} levelFilter="A1 Beginner" />
+        <LevelList levels={levels} levelFilter={levelFilter} />
 
         <div
           className={

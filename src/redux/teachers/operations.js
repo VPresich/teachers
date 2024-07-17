@@ -33,7 +33,6 @@ export const getTeacherById = createAsyncThunk(
 export const getTeachersWithParams = createAsyncThunk(
   "teachers/withParams",
   async ({ page, limit, query }, thunkAPI) => {
-    console.log("getTeachersWithParams", query, page, limit);
     try {
       const response = await axiosInst.get(`teachers`, {
         params: {

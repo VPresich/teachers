@@ -69,6 +69,7 @@ const teachersSlice = createSlice({
         state.currentPage = action.payload.page;
         state.itemsPerPage = action.payload.limit;
         state.totalItems = action.payload.totalRecords;
+        state.totalPages = action.payload.totalPages;
 
         if (state.currentPage > 1)
           state.items = [...state.items, ...action.payload.teachers];

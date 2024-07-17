@@ -17,7 +17,6 @@ export default function LoginForm({ handleLogin }) {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    // console.log("SUBMITLogin", values);
     handleLogin(values);
   };
 

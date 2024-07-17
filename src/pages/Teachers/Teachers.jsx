@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  // getTeachersPerPage,
-  getTeachersWithParams,
-} from "../../redux/teachers/operations";
+import { getTeachersWithParams } from "../../redux/teachers/operations";
 import { fetchFavorites } from "../../redux/favorites/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectQueryParams } from "../../redux/filters/selectors";
@@ -26,7 +23,6 @@ export default function Teachers() {
   const dispatch = useDispatch();
 
   const teachers = useSelector(selectTeachers);
-  // console.log("TEACHERS", teachers);
 
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
@@ -35,7 +31,6 @@ export default function Teachers() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const queryParams = useSelector(selectQueryParams);
-  console.log("queryParams", queryParams);
 
   useEffect(() => {
     dispatch(
@@ -60,16 +55,20 @@ export default function Teachers() {
           <Filters />
           <div className={css.catalog}>
             <CardList teachers={teachers} />
+
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              isMore && (
+                <Button
+                  onClick={handleLoadMore}
+                  btnAuxStyles={css.btnAuxStyles}
+                >
+                  Load More
+                </Button>
+              )
+            )}
           </div>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            isMore && (
-              <Button onClick={handleLoadMore} btnAuxStyles={css.btnAuxStyles}>
-                Load More
-              </Button>
-            )
-          )}
         </section>
       </AppLayout>
     </>

@@ -31,17 +31,3 @@
   line-height: 137%;
   color: rgba(18, 20, 23, 0.8);
 }
-
-.inputsWrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 18px;
-}
-
-.btnAuxStyles {
-  background-color: var(--yellow);
-}
-
-.btnAuxStyles:hover {
-  background-color: var(--yellow-accent);
-}
