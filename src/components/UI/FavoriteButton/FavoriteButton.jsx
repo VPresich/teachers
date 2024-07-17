@@ -1,26 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
-import { selectFavorites } from "../../../redux/teachers/selectors";
+import { selectIsFavorite } from "../../../redux/favorites/selectors";
 import { selectTheme } from "../../../redux/auth/selectors";
 import {
-  addToFavorites,
-  removeFromFavorites,
-} from "../../../redux/teachers/slice";
+  addFavorite,
+  removeFavorite,
+} from "../../../redux/favorites/operations";
+
 import iconsPath from "../../../assets/img/icons.svg";
 import css from "./FavoriteButton.module.css";
 
-export default function FavoriteButton({ id }) {
+const FavoriteButton = ({ id }) => {
   const dispatch = useDispatch();
 
   const theme = useSelector(selectTheme);
-  const favorites = useSelector(selectFavorites);
-  const isFavorite = favorites.includes(id);
+  const isFavorite = useSelector((state) => selectIsFavorite(state, id));
+
+  console.log("FavoriteButton: isFavorite", isFavorite);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
-      dispatch(removeFromFavorites(id));
+      dispatch(removeFavorite(id));
     } else {
-      dispatch(addToFavorites(id));
+      dispatch(addFavorite(id));
     }
   };
 
@@ -36,4 +38,6 @@ export default function FavoriteButton({ id }) {
       </svg>
     </button>
   );
-}
+};
+
+export default FavoriteButton;

@@ -1,16 +1,7 @@
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.favorites {
-  margin-top: 60px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 558px;
 }
 
 .text {

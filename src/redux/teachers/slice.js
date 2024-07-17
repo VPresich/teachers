@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logOut } from "../auth/operations";
 import {
   getTeachersPerPage,
   getTeacherById,
@@ -31,18 +30,6 @@ const teachersSlice = createSlice({
       state.totalItems = 20;
       state.totalPages = 1;
       state.itemsPerPage = 4;
-    },
-
-    addToFavorites: (state, action) => {
-      const camperId = action.payload;
-      if (!state.favorites.includes(camperId)) {
-        state.favorites.push(camperId);
-      }
-    },
-
-    removeFromFavorites: (state, action) => {
-      const camperId = action.payload;
-      state.favorites = state.favorites.filter((id) => id !== camperId);
     },
   },
 
@@ -113,17 +100,9 @@ const teachersSlice = createSlice({
       .addCase(getTeacherById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
-
-      //-----------------------------------------------
-      .addCase(logOut.fulfilled, (state) => {
-        resetStore();
-        state.favorites = [];
       });
-    //-------------------------------------------------
   },
 });
 
-export const { addToFavorites, removeFromFavorites, setPage, resetStore } =
-  teachersSlice.actions;
+export const { setPage, resetStore } = teachersSlice.actions;
 export default teachersSlice.reducer;

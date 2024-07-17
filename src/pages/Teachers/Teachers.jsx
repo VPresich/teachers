@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTeachersPerPage } from "../../redux/teachers/operations";
+import { fetchFavorites } from "../../redux/favorites/operations";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { setPage } from "../../redux/teachers/slice";
 import CardList from "../../components/CardsList/CardsList";
 import {
@@ -25,6 +27,7 @@ export default function Teachers() {
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);
   const isMore = useSelector(selectIsMore);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   // const queryParams = useSelector(selectQueryParams);
 
@@ -36,7 +39,8 @@ export default function Teachers() {
         // queryParams,
       })
     );
-  }, [dispatch, currentPage, itemsPerPage]);
+    isLoggedIn && dispatch(fetchFavorites());
+  }, [dispatch, currentPage, itemsPerPage, isLoggedIn]);
 
   const handleLoadMore = () => {
     dispatch(setPage(currentPage + 1));
