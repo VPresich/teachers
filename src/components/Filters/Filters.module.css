@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  column-gap: 20px;
+  justify-content: flex-start;
+}
+
+.filterLabel {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--default);
+  background-color: transparent;
+}
+
+.btnPrice {
+  width: 124px;
+}
+
+.dropdownPrice {
+  width: 124px;
+}

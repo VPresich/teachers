@@ -4,7 +4,7 @@ import {
   selectUserName,
 } from "../../../redux/auth/selectors";
 import AuthButton from "../AuthButton/AuthButton";
-import ThemeSelector from "../../ThemeSelector/ThemeSelector";
+import ColorSelector from "../../ColorSelector/ColorSelector";
 import RegistrationButton from "../RegistrationButton/RegistrationButton";
 
 import css from "./AuthMenu.module.css";
@@ -17,7 +17,7 @@ const AuthMenu = () => {
     <div className={css.authPart}>
       {isLoggedIn && <p className={css.userName}>{`Welcome, ${userName}`}</p>}
       <AuthButton>{isLoggedIn ? "Logout" : "Log in"}</AuthButton>
-      {!isLoggedIn ? <RegistrationButton /> : <ThemeSelector />}
+      {!isLoggedIn ? <RegistrationButton /> : <ColorSelector />}
     </div>
   );
 };

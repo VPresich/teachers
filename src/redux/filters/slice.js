@@ -4,8 +4,8 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState: {
     params: {
-      level: "all",
-      language: "all",
+      level: "A1 Beginner",
+      language: "English",
       price_per_hour: 100,
     },
   },

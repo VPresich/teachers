@@ -7,6 +7,7 @@
   border: 3px solid var(--default-accent);
   background-color: transparent;
   overflow: hidden;
+  position: relative;
 }
 
 .img {
@@ -27,4 +28,26 @@
 }
 .container.red {
   border-color: var(--red-accent);
+}
+
+.onlineMarker {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: 2px solid var(--white);
+}
+
+.onlineMarker::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--price);
+  display: block;
+  margin: 1px auto;
 }

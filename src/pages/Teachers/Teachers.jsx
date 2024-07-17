@@ -5,6 +5,7 @@ import { fetchFavorites } from "../../redux/favorites/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { setPage } from "../../redux/teachers/slice";
 import CardList from "../../components/CardsList/CardsList";
+import Filters from "../../components/Filters/Filters";
 import {
   selectTeachers,
   selectCurrentPage,
@@ -51,6 +52,7 @@ export default function Teachers() {
       <AppLayout>
         <section className={css.container}>
           <h2 className="visually-hidden"> Teachers catalog</h2>
+          <Filters />
           <div className={css.catalog}>
             <CardList teachers={teachers} />
           </div>

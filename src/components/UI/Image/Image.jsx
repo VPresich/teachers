@@ -8,6 +8,7 @@ const Image = ({ imgUrl, name }) => {
   return (
     <div className={clsx(css.container, css[theme])}>
       <img className={css.img} src={imgUrl} alt={name} />
+      <span className={css.onlineMarker}></span>
     </div>
   );
 };
