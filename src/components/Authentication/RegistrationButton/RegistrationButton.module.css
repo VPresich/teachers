@@ -1,9 +1,3 @@
-.buttons {
-  display: flex;
-  column-gap: 16px;
-  align-items: center;
-}
-
 .btn {
   border-radius: 12px;
   padding-top: 14px;

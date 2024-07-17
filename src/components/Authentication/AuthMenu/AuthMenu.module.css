@@ -15,3 +15,8 @@
   background-color: transparent;
   color: var(--primary);
 }
+
+.btnsWrapper {
+  display: flex;
+  gap: 8px;
+}
