@@ -22,7 +22,7 @@ const teachersSlice = createSlice({
       state.currentPage = action.payload;
     },
 
-    resetStore(state) {
+    resetTeachersState(state) {
       state.currentPage = 1;
       state.items = [];
       state.isLoading = false;
@@ -104,5 +104,5 @@ const teachersSlice = createSlice({
   },
 });
 
-export const { setPage, resetStore } = teachersSlice.actions;
+export const { setPage, resetTeachersState } = teachersSlice.actions;
 export default teachersSlice.reducer;

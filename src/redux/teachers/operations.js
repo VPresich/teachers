@@ -10,7 +10,7 @@ export const getTeachersPerPage = createAsyncThunk(
           page,
           limit,
         },
-      });     
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,6 +33,7 @@ export const getTeacherById = createAsyncThunk(
 export const getTeachersWithParams = createAsyncThunk(
   "teachers/withParams",
   async ({ page, limit, query }, thunkAPI) => {
+    console.log("getTeachersWithParams", query, page, limit);
     try {
       const response = await axiosInst.get(`teachers`, {
         params: {
@@ -41,10 +42,7 @@ export const getTeachersWithParams = createAsyncThunk(
           ...query,
         },
       });
-      return {
-        items: response.data,
-        totalItems: response.data.length,
-      };
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

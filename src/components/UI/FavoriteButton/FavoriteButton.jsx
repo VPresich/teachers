@@ -16,8 +16,6 @@ const FavoriteButton = ({ id }) => {
   const theme = useSelector(selectTheme);
   const isFavorite = useSelector((state) => selectIsFavorite(state, id));
 
-  console.log("FavoriteButton: isFavorite", isFavorite);
-
   const handleToggleFavorite = () => {
     if (isFavorite) {
       dispatch(removeFavorite(id));

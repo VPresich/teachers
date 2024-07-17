@@ -14,6 +14,11 @@ const DropDownSelector = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleOnChange = (event) => {
+    onChange(event.target.value);
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className={css.container}>
       <button
@@ -51,9 +56,7 @@ const DropDownSelector = ({
                 type="radio"
                 value={option}
                 checked={selectedOption === option}
-                onChange={(event) => {
-                  onChange(event.target.value);
-                }}
+                onChange={handleOnChange}
               />
               {option}
             </label>

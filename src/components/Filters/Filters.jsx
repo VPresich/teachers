@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { saveLevel, saveLanguage, savePrice } from "../../redux/filters/slice";
+import { resetTeachersState } from "../../redux/teachers/slice";
 import {
   selectLevel,
   selectLanguage,
@@ -39,14 +40,17 @@ const Filters = () => {
 
   const handleLevelChange = (level) => {
     dispatch(saveLevel(level));
+    dispatch(resetTeachersState());
   };
 
   const handleLangChange = (lang) => {
     dispatch(saveLanguage(lang));
+    dispatch(resetTeachersState());
   };
 
   const handlePriceChange = (price) => {
     dispatch(savePrice(price));
+    dispatch(resetTeachersState());
   };
 
   return (
