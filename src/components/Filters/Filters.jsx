@@ -1,4 +1,10 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveLevel, saveLanguage, savePrice } from "../../redux/filters/slice";
+import {
+  selectLevel,
+  selectLanguage,
+  selectPrice,
+} from "../../redux/filters/selectors";
 
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import css from "./Filters.module.css";
@@ -26,20 +32,21 @@ const Filters = () => {
 
   const prices = ["10 $", "20 $", "30 $", "40 $"];
 
-  const [selectedLevel, setSelectedLevel] = useState(levels[0]);
-  const [selectedLang, setSelectedLang] = useState(languages[0]);
-  const [selectedPrice, setSelectedPrice] = useState(prices[0]);
+  const selectedLevel = useSelector(selectLevel);
+  const selectedLang = useSelector(selectLanguage);
+  const selectedPrice = useSelector(selectPrice);
+  const dispatch = useDispatch();
 
   const handleLevelChange = (level) => {
-    setSelectedLevel(level);
+    dispatch(saveLevel(level));
   };
 
   const handleLangChange = (lang) => {
-    setSelectedLang(lang);
+    dispatch(saveLanguage(lang));
   };
 
   const handlePriceChange = (price) => {
-    setSelectedPrice(price);
+    dispatch(savePrice(price));
   };
 
   return (
