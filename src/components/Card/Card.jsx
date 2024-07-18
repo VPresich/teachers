@@ -4,6 +4,7 @@ import { selectLevel } from "../../redux/filters/selectors";
 import CardFirstLine from "../CardFirstLine/CardFirstLine";
 import LevelList from "../LevelList/LevelList";
 import CardDetails from "../CardDetails/CardDetails";
+import FavoriteButton from "../../components/UI/FavoriteButton/FavoriteButton";
 import Button from "../UI/Button/Button";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 import BookingFormContent from "../BookingFormContent/BookingFormContent";
@@ -50,6 +51,9 @@ export default function Card({ teacher }) {
             <p className={css.name}>{name} </p>
           </div>
           <CardFirstLine teacher={teacher} />
+          <div className={css.favoriteContainer}>
+            <FavoriteButton id={teacher._id} />
+          </div>
         </div>
         <div className={css.mainInfo}>
           <div className={css.descrWrapper}>

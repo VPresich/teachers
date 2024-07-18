@@ -1,4 +1,4 @@
-import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
+// import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
 import VertSeparator from "../UI/VertSeparator/VertSeparator";
 import iconsPath from "../../assets/img/icons.svg";
 import formatNumber from "../../auxiliary/formatNumber";
@@ -46,7 +46,7 @@ export default function CardFirstLine({ teacher }) {
           <span className={css.separator}></span>
         </div>
       </div>
-      <FavoriteButton id={teacher._id} />
+      {/* <FavoriteButton id={teacher._id} /> */}
     </div>
   );
 }

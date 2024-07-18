@@ -4,7 +4,6 @@ import {
   selectUserName,
 } from "../../../redux/auth/selectors";
 import AuthButton from "../AuthButton/AuthButton";
-import ColorSelector from "../../ColorSelector/ColorSelector";
 import RegistrationButton from "../RegistrationButton/RegistrationButton";
 import GoogleButton from "../GoogleBtn/GoogleBtn";
 
@@ -16,15 +15,19 @@ const AuthMenu = () => {
 
   return (
     <div className={css.authPart}>
-      {isLoggedIn && <p className={css.userName}>{`Welcome, ${userName}`}</p>}
-      <AuthButton>{isLoggedIn ? "Logout" : "Log in"}</AuthButton>
-      {!isLoggedIn ? (
-        <div className={css.btnsWrapper}>
-          <RegistrationButton />
-          <GoogleButton />
-        </div>
+      {isLoggedIn ? (
+        <>
+          <p className={css.userName}>{`Hi, ${userName}`}</p>
+          <AuthButton>Logout</AuthButton>
+        </>
       ) : (
-        <ColorSelector />
+        <>
+          <AuthButton>Log In</AuthButton>
+          <div className={css.btnsWrapper}>
+            <RegistrationButton />
+            <GoogleButton />
+          </div>
+        </>
       )}
     </div>
   );

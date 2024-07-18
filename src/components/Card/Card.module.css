@@ -15,10 +15,16 @@
   flex-direction: column;
 }
 
+.favoriteContainer {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 .mainInfo {
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
@@ -30,6 +36,7 @@
 
 .firstLine {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 32px;
@@ -116,3 +123,13 @@ details {
 .btnAuxStyles {
   width: 232px;
 }
+/* 
+@media screen and (max-width: 767px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 375px) {
+} */

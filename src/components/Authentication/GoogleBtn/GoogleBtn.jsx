@@ -8,7 +8,6 @@ export default function GoogleBtn() {
       <span>
         <img src={googleIcon} alt="google icon" className={css.icon} />
       </span>
-      {/* <span className={css.text}>Google Log In</span> */}
     </a>
   );
 }

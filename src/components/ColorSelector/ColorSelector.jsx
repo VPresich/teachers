@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTheme } from "../../redux/auth/operations";
-import { selectTheme } from "../../redux/auth/selectors";
+import { selectTheme, selectIsLoggedIn } from "../../redux/auth/selectors";
 import { setTheme } from "../../redux/auth/slice";
+
 import iconsPath from "../../assets/img/icons.svg";
 import clsx from "clsx";
 import css from "./ColorSelector.module.css";
@@ -12,7 +13,10 @@ const themes = ["yellow", "green", "blue", "pink", "red"];
 const ColorSelector = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpen, setIsOpen] = useState(false);
+
+  if (!isLoggedIn) return false;
 
   const handleThemeChange = (event) => {
     const selectedTheme = event.target.value.toLowerCase();

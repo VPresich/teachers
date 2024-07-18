@@ -7,7 +7,6 @@
 .featuresContainer {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   flex-wrap: wrap;
   margin-right: 64px;
 }
