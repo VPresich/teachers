@@ -1,12 +1,12 @@
-.container {
-  max-width: var(--max-width);
+.container { 
   width: 100%;
   padding-left: 128px;
   padding-right: 128px;
   padding-top: 88px;
+  padding-bottom: 88px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 }
 
 .text {
@@ -77,6 +77,7 @@
 @media screen and (max-width: 768px) {
   .container {
     padding-top: 68px;
+    padding-bottom: 68px;
     padding-left: 16px;
     padding-right: 16px;
   }
