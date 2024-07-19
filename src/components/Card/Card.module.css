@@ -32,13 +32,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 95%;
 }
 
 .firstLine {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  padding-right: 90px;
   margin-bottom: 32px;
 }
 
@@ -74,11 +74,17 @@
   gap: 4px;
 }
 
+.langWrapper {
+  display: flex;
+  gap: 4px;
+}
+
 .description {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: var(--primary);
+  overflow: auto;
 }
 
 .readMore {
@@ -123,13 +129,23 @@ details {
 .btnAuxStyles {
   width: 232px;
 }
-/* 
-@media screen and (max-width: 767px) {
-  .container {
-    display: flex;
+
+@media screen and (max-width: 1240px) {
+  .firstLine {
+    padding-right: 0;
     flex-direction: column;
+    row-gap: 24px;
   }
 }
 
-@media screen and (max-width: 375px) {
-} */
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+
+  .descrWrapper {
+    flex-direction: column;
+  }
+}

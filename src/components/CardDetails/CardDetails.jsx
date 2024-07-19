@@ -5,7 +5,10 @@ const CardDetails = ({ teacher }) => {
   const { experience, reviews } = teacher;
   return (
     <div className={css.container}>
-      <p className={css.experience}>{experience}</p>
+      <div className={css.descrWrapper}>
+        <span className={css.label}>Experience:</span>
+        <p className={css.experience}>{experience}</p>
+      </div>
       <Reviewers reviews={reviews} />
     </div>
   );

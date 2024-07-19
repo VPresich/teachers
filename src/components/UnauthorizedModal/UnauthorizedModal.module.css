@@ -31,3 +31,9 @@
   line-height: 137%;
   color: rgba(18, 20, 23, 0.8);
 }
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+}

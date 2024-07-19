@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectLevel } from "../../redux/filters/selectors";
-import CardFirstLine from "../CardFirstLine/CardFirstLine";
+import CardFeatures from "../CardFeatures/CardFeatures";
 import LevelList from "../LevelList/LevelList";
 import CardDetails from "../CardDetails/CardDetails";
 import FavoriteButton from "../../components/UI/FavoriteButton/FavoriteButton";
@@ -50,13 +50,13 @@ export default function Card({ teacher }) {
             <span className={css.label}>Languages</span>
             <p className={css.name}>{name} </p>
           </div>
-          <CardFirstLine teacher={teacher} />
+          <CardFeatures teacher={teacher} />
           <div className={css.favoriteContainer}>
             <FavoriteButton id={teacher._id} />
           </div>
         </div>
         <div className={css.mainInfo}>
-          <div className={css.descrWrapper}>
+          <div className={css.langWrapper}>
             <span className={css.label}>Speaks: </span>
             <span className={css.languages}>{languages.join(", ")}</span>
           </div>
@@ -65,7 +65,7 @@ export default function Card({ teacher }) {
             <span className={css.label}>Lesson Info:</span>
             <EllipsisText
               text={lesson_info}
-              maxLines={1}
+              maxLines={3}
               className={css.description}
             />
           </div>
@@ -74,7 +74,7 @@ export default function Card({ teacher }) {
             <span className={css.label}>Conditions:</span>
             <EllipsisText
               text={conditions.join(" ")}
-              maxLines={1}
+              maxLines={3}
               className={css.description}
             />
           </div>
