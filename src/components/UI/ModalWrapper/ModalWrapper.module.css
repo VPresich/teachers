@@ -52,5 +52,19 @@
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 32px;
+    padding-left: 32px;
+    padding-bottom: 32px;
+    padding-right: 32px;
+  }
+
+  .closeBtn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 }

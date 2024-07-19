@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 import { saveLevel, saveLanguage, savePrice } from "../../redux/filters/slice";
 import { resetTeachersState } from "../../redux/teachers/slice";
+import { selectTheme } from "../../redux/auth/selectors";
 import {
   selectLevel,
   selectLanguage,
@@ -10,29 +12,30 @@ import {
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import css from "./Filters.module.css";
 
+const levels = [
+  "A1 Beginner",
+  "A2 Elementary",
+  "B1 Intermediate",
+  "B2 Upper-Intermediate",
+  "C1 Advanced",
+  "C2 Proficient",
+];
+
+const languages = [
+  "English",
+  "German",
+  "Spanish",
+  "French",
+  "Mandarin Chinese",
+  "Italian",
+  "Korean",
+  "Vietnamese",
+];
+
+const prices = ["10 $", "20 $", "30 $", "40 $"];
+
 const Filters = () => {
-  const levels = [
-    "A1 Beginner",
-    "A2 Elementary",
-    "B1 Intermediate",
-    "B2 Upper-Intermediate",
-    "C1 Advanced",
-    "C2 Proficient",
-  ];
-
-  const languages = [
-    "English",
-    "German",
-    "Spanish",
-    "French",
-    "Mandarin Chinese",
-    "Italian",
-    "Korean",
-    "Vietnamese",
-  ];
-
-  const prices = ["10 $", "20 $", "30 $", "40 $"];
-
+  const theme = useSelector(selectTheme);
   const selectedLevel = useSelector(selectLevel);
   const selectedLang = useSelector(selectLanguage);
   const selectedPrice = useSelector(selectPrice);
@@ -56,7 +59,7 @@ const Filters = () => {
   return (
     <div className={css.container}>
       <div className={css.wrapper}>
-        <p className={css.filterLabel}>Languages:</p>
+        <p className={clsx(css.label, css[theme])}>Languages:</p>
         <DropDownSelector
           btnLabel={selectedLang}
           options={languages}
@@ -67,7 +70,7 @@ const Filters = () => {
         />
       </div>
       <div className={css.wrapper}>
-        <p className={css.filterLabel}>Level of knowledge:</p>
+        <p className={clsx(css.label, css[theme])}>Level of knowledge:</p>
         <DropDownSelector
           btnLabel={selectedLevel}
           options={levels}
@@ -76,7 +79,7 @@ const Filters = () => {
         />
       </div>
       <div className={css.wrapper}>
-        <p className={css.filterLabel}>Price:</p>
+        <p className={clsx(css.label, css[theme])}>Price:</p>
         <DropDownSelector
           btnLabel={selectedPrice}
           options={prices}

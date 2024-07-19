@@ -32,7 +32,7 @@ const AppMobileMenuBtn = () => {
             className={clsx(css.closeIcon, css[theme])}
             width="24"
             height="24"
-            aria-label="burger menu button"
+            aria-label="close menu button"
           >
             <use href={`${iconsPath}#icon-x-close`} />
           </svg>
