@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { selectTheme } from "../../redux/auth/selectors";
 import DocumentTitle from "../../components/DocumentTitle";
-import AppLayout from "../../components/AppLayout/AppLayout";
 import Button from "../../components/UI/Button/Button";
 import imgDefaultUrl from "../../assets/img/home/default_block.svg";
 import imgYellowUrl from "../../assets/img/home/yellow_block.svg";
@@ -69,53 +68,53 @@ export default function HomePage() {
   return (
     <>
       <DocumentTitle>Home Page</DocumentTitle>
-      <AppLayout>
-        <div className={css.container}>
-          <section className={css.welcomeSection}>
-            <div className={css.info}>
-              <div className={css.titleConainer}>
-                <h1 className={css.title}>
-                  Unlock your potential with the best{" "}
-                  <span className={clsx(css.accent, css[theme])}>language</span>{" "}
-                  tutors
-                </h1>
-              </div>
-              <p className={css.text}>
-                Embark on an Exciting Language Journey with Expert Language
-                Tutors: Elevate your language proficiency to new heights by
-                connecting with highly qualified and experienced tutors.
-              </p>
-              <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
-                Get started
-              </Button>
-            </div>
-            <div className={css.imgContainer}>
-              <img src={selectImgUrl(theme)} alt="camp" className={css.img} />
-            </div>
-          </section>
+      <div className={css.container}>
+        <section className={css.welcome}>
+          <div className={css.info}>
+            <h1 className={css.title}>
+              Unlock your potential with the best{" "}
+              <span className={clsx(css.accent, css[theme])}>language</span>{" "}
+              tutors
+            </h1>
+            <p className={css.text}>
+              Embark on an Exciting Language Journey with Expert Language
+              Tutors: Elevate your language proficiency to new heights by
+              connecting with highly qualified and experienced tutors.
+            </p>
+            <Button onClick={handleClick} btnAuxStyles={css.btnAuxStyles}>
+              Get started
+            </Button>
+          </div>
+          <div className={css.imgContainer}>
+            <img
+              src={selectImgUrl(theme)}
+              alt="girl picture"
+              className={css.img}
+            />
+          </div>
+        </section>
 
-          <section className={clsx(css.statisticsSection, css[theme])}>
-            <ul className={css.statisticsList}>
-              <li className={css.statisticsItem}>
-                <p className={css.itemValue}>32,000 +</p>
-                <p className={css.itemTitle}>Experienced tutors</p>
-              </li>
-              <li className={css.statisticsItem}>
-                <p className={css.itemValue}>300,000 +</p>
-                <p className={css.itemTitle}>5-star tutor reviews</p>
-              </li>
-              <li className={css.statisticsItem}>
-                <p className={css.itemValue}>120 +</p>
-                <p className={css.itemTitle}>Subjects taught</p>
-              </li>
-              <li className={css.statisticsItem}>
-                <p className={css.itemValue}>200 +</p>
-                <p className={css.itemTitle}>Tutor nationalities</p>
-              </li>
-            </ul>
-          </section>
-        </div>
-      </AppLayout>
+        <section className={clsx(css.statistics, css[theme])}>
+          <ul className={css.statisticsList}>
+            <li className={css.statisticsItem}>
+              <p className={css.itemValue}>32,000 +</p>
+              <p className={css.itemTitle}>Experienced tutors</p>
+            </li>
+            <li className={css.statisticsItem}>
+              <p className={css.itemValue}>300,000 +</p>
+              <p className={css.itemTitle}>5-star tutor reviews</p>
+            </li>
+            <li className={css.statisticsItem}>
+              <p className={css.itemValue}>120 +</p>
+              <p className={css.itemTitle}>Subjects taught</p>
+            </li>
+            <li className={css.statisticsItem}>
+              <p className={css.itemValue}>200 +</p>
+              <p className={css.itemTitle}>Tutor nationalities</p>
+            </li>
+          </ul>
+        </section>
+      </div>
     </>
   );
 }

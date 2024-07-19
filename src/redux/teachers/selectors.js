@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
-// import { selectQueryParams } from "../filters/selectors";
 
 export const selectTeachersState = (state) => state.teachers;
 export const selectTeachers = (state) => state.teachers.items;
+export const selectTeachersNumber = (state) => state.teachers.items.length || 0;
 
 export const selectIsLoading = (state) => state.teachers.isLoading;
 export const selectError = (state) => state.teachers.error;
@@ -20,7 +20,7 @@ export const selectIsMore = createSelector(
 );
 
 export const selectTeacherById = createSelector(
-  [selectTeachers, (state, teacherId) => teacherId],
+  [selectTeachers, (_, teacherId) => teacherId],
   (teachers, teacherId) => teachers.find((teacher) => teacher._id === teacherId)
 );
 
