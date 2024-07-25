@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { errNotify } from "../../../auxiliary/notification/notification";
+import { ERR_REGISTRATION } from "../Forms/constants";
 import { register } from "../../../redux/auth/operations";
 import ModalWrapper from "../../UI/ModalWrapper/ModalWrapper";
 import RegisterForm from "../Forms/RegisterForm/RegisterForm";
 import css from "./RegistrationButton.module.css";
 
-const RegistrationButton = (handleClick) => {
+const RegistrationButton = () => {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const dispatch = useDispatch();
 
@@ -18,14 +20,14 @@ const RegistrationButton = (handleClick) => {
   };
 
   const handleRegistration = (values) => {
-    console.log("Values", values);
     dispatch(register(values))
       .unwrap()
       .then(() => {
         setShowRegisterForm(false);
-        handleClick && handleClick();
       })
-      .catch(() => {});
+      .catch(() => {
+        errNotify(ERR_REGISTRATION);
+      });
   };
 
   return (

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { errNotify } from "../../../auxiliary/notification/notification";
+import { ERR_LOGIN } from "../Forms/constants";
 import iconsPath from "../../../assets/img/icons.svg";
 import { selectIsLoggedIn, selectTheme } from "../../../redux/auth/selectors";
 import ModalWrapper from "../../UI/ModalWrapper/ModalWrapper";
@@ -9,7 +11,7 @@ import css from "./AuthButton.module.css";
 
 import clsx from "clsx";
 
-export default function AuthButton({ children, handleClick }) {
+export default function AuthButton({ children }) {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const dispatch = useDispatch();
 
@@ -22,7 +24,6 @@ export default function AuthButton({ children, handleClick }) {
     } else {
       setShowLoginForm(true);
     }
-    handleClick && handleClick();
   };
 
   const handleLogin = (values) => {
@@ -31,7 +32,9 @@ export default function AuthButton({ children, handleClick }) {
       .then(() => {
         setShowLoginForm(false);
       })
-      .catch(() => {});
+      .catch(() => {
+        errNotify(ERR_LOGIN);
+      });
   };
 
   const handleCloseLogin = () => {
