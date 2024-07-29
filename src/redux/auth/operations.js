@@ -6,7 +6,7 @@ export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const resp = await axiosInst.post("/users/register", credentials);
+      const resp = await axiosInst.post("users/register", credentials);
       setAuthHeader(resp.data.token);
       return resp.data;
     } catch (error) {
@@ -19,7 +19,7 @@ export const logIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const resp = await axiosInst.post("/users/login", credentials);
+      const resp = await axiosInst.post("users/login", credentials);
       setAuthHeader(resp.data.token);
       return resp.data;
     } catch (error) {
@@ -46,8 +46,7 @@ export const refreshUser = createAsyncThunk(
 
     // Add it to the HTTP header and perform the request
     setAuthHeader(savedToken);
-    const response = await axiosInst.get("/users/current");
-
+    const response = await axiosInst.get("users/current");
     return response.data;
   },
   {
